@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>File Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.css">
+    
+  </head>
+  <body>
+    <style type="text/css">
+      .loading {
+        top: 200 px;
+        margin: auto;
+        position: absolute;
+        z-index: 1000;
+        width: 160px;
+        height: 24px;
+        background: url(/static/loading.gif);
+        cursor: wait;
+      }
+    </style>
+    <script type="text/javascript">
+      function loading(){
+          $("#loading").show();
+          $("#content").hide();       
+      }
+    </script>
+    <div id="loading"></div>
+    <div id="content">
+      <h1>File Upload</h1>
+      <p>Upload all pdf's and the template file to create Cutsheets</p>
+      <form action="{{ url_for('upload_files') }}" class="dropzone">
+      </form>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.js"></script>
+      <p>Press Create to begin loading the Cutsheets.</p>
+        <p>
+        <form action="/download" method="GET">
+          <input type="submit", value = 'CREATE', onclick='loading()'>
+        </form>
+        </p>
+    </div>    
+  </body>
+</html>
